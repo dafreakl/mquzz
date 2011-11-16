@@ -1,0 +1,8 @@
+mquzz - audio based movie quiz
+everyday a new quote
+
+built with sinatra and backbone.js using buzz.js for audio support
+
+ TODO:
+    - analytics
+    - merge and minify
