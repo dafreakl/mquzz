@@ -6,18 +6,20 @@ require 'mongoid'
 require 'amatch'
 include Amatch
 
-configure do
-  Mongoid.configure do |config|
-    config.master = Mongo::Connection.new.db("mq2")
-    host = "localhost"
-    autocreate_indexes = true
-  end
-end
+Mongoid.load!("config/mongoid.yml")
+
+#configure do
+#  Mongoid.configure do |config|
+#    config.master = Mongo::Connection.new.db("mq2")
+#    host = "localhost"
+#    autocreate_indexes = true
+#  end
+#end
 
 get '/api/quotes' do
   content_type :json
-  @quotes = Quote.all().fields(["number", "qdate", "solutions", "commits", "audiourl", "addinfo"]).desc(:number)
-  @quotes.to_json()
+  quotes = Quote.all().fields(["number", "qdate", "solutions", "commits", "audiourl", "addinfo"]).desc(:number)
+  quotes.to_json()
 end
 
 get '/api/quote/:year/:month/:day' do 
@@ -25,14 +27,14 @@ get '/api/quote/:year/:month/:day' do
   content_type :json
 
   dat = "#{params[:day]}-#{params[:month]}-#{params[:year]}"
-  @quote = Quote.where(qdate: dat).fields(["number", "qdate", "solutions", "commits", "audiourl", "addinfo"])
-  @quote.to_json(:except => [:titles])
+  quote = Quote.where(qdate: dat).fields(["number", "qdate", "solutions", "commits", "audiourl", "addinfo"])
+  quote.to_json(:except => [:titles])
 end
 
 get '/api/quote/:nr' do |nr|
   content_type :json
-  @quote = Quote.where(number: nr).fields(["number", "qdate", "solutions", "commits", "audiourl", "addinfo"])
-  @quote.to_json(:except => [:titles])
+  quote = Quote.where(number: nr).fields(["number", "qdate", "solutions", "commits", "audiourl", "addinfo"])
+  quote.to_json(:except => [:titles])
 end
 
 post '/api/quote/:nr/evaluate' do |nr|
