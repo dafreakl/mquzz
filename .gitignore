@@ -4,3 +4,6 @@
 
 # install scripts
 install_*.rb
+
+# config files
+mongoid.yml
