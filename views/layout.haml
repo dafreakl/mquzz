@@ -1,0 +1,281 @@
+!!! 5
+/[if lt IE 7] <html class="no-js ie6 oldie" lang="en">
+/[if IE 7]    <html class="no-js ie7 oldie" lang="en">
+/[if IE 8]    <html class="no-js ie8 oldie" lang="en">
+/[if gt IE 8] <!-->  <html class="no-js" lang="en"> <!--
+%head
+  %meta{'charset' => 'utf-8' }
+  %meta{'name' => 'description', 'content' => 'mquzz ist ein audiobasiertes Filmquiz mit w&ouml;chentlich 10 neuen Fragen. Teste jetzt dein Filmwissen auf eine andere Art.' }  
+  %meta{'name' => 'author', 'content' => 'Oliver Heck' }
+  %meta{'name' => 'keywords', 'content' => 'filmzitate raten, filmzitat, zitate filme, filmquiz' }
+  
+  %meta{'http-equiv' => 'imagetoolbar', 'content' => 'false'}
+  
+  %meta{'name' => 'application-name', 'content' => 'mquzz'}
+  %meta{'name' => 'msapplication-tooltip', 'content' => 'Ein audiobasiertes Filmquiz'}
+  %meta{'name' => 'msapplication-starturl', 'content' => 'http://www.mquzz.de'}
+  %meta{'name' => 'msapplication-task', 'content' => 'name=Regeln;action-uri=http://www.mquzz.de/regeln'}
+  %meta{'name' => 'msapplication-task', 'content' => 'name=Info;action-uri=http://www.mquzz.de/info'}
+  
+  %meta{'property' => 'og:title', 'content' => 'mquzz'}
+  %meta{'property' => 'og:description', 'content' => 'Ein audiobasiertes Filmquiz'}
+  %meta{'property' => 'og:image', 'content' => 'http://mquzz.de/mquzz.jpg'}
+  %meta{'property' => 'og:type', 'content' => 'movie'}
+  %meta{'property' => 'og:url', 'content' => 'http://mquzz.de'}
+  %meta{'property' => 'og:site_name', 'content' => 'mquzz - ein audiobasiertes Filmquiz'}
+
+  %title mquzz - eine audiobasiertes Filmquiz in deutscher Sprache
+  
+  %link(rel="stylesheet" href="/css/style.css?v=2")
+  %link(rel="stylesheet" href="/css/screen.css?v=2")
+  %link(rel="stylesheet" href="/css/fancy.css?v=2")
+  %link(rel="stylesheet" href="/css/button.css?v=2")
+  /[if lt IE 8] <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">  
+  %link(rel="stylesheet" href="/css/css.css?v=2")
+  %script(src="/js/libs/modernizr.js")
+%body
+  %div.container#nav-area
+    %div.span-24.last
+      %h1
+        mquzz
+    
+    %div.span-6.append-18
+      %nav
+        %ul.mq-nav-list
+          %li
+            %div.mq-box#current
+              %a{ :href => '' }
+                %h3.alt raten
+          %li
+            %div.mq-box#rules
+              %a{ :href => '' }
+                %h3.alt regeln
+          %li
+            %div.mq-box#info
+              %a{ :href => '' }
+                %h3.alt info
+    %hr
+    
+  %div.container#main-area
+
+  %div.container#list-area
+    %div.span-24
+      %p.incr Weitere Filmzitate:
+      %nav#quotes
+        %ol.mq-nav-list
+
+
+  %div.container#info-area
+    %div.span-24
+      %h5.bottom
+        Wie kann ich dieses Projekt unterstuetzen?
+      %p
+        technisch durch tipps und tricks, monitaer durch den spenden knopf oder den
+        amazon links oder einfach durch einen netten kommentar
+        %form{ :action => 'https://www.paypal.com/cgi-bin/webscr', :method => 'post' }
+          %input{ :type => 'hidden', :name => 'cmd', :value => '_s-xclick' }
+          %input{ :type => 'hidden', :name => 'hosted_button_id', :value => 'WBNXWDLPMP9YC' }
+          %input{ :type => 'image', :src => 'https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_SM.gif', :border => '0', :name => 'submit', :alt => 'Jetzt einfach, schnell und sicher online bezahlen - mit PayPal.' }
+          %img{ :alt => '', :border => '0', :src => 'https://www.paypalobjects.com/de_DE/i/scr/pixel.gif', :width => '1', :height => '1' }
+
+    %div.span-24
+      %h5.bottom
+        Auf welcher Datenbank baut die Anwendung auf?
+      %p
+        mquzz verwendet mongodb welches auf mongolabs.com gehostet ist. Da es sich hier
+        jedoch um eine sehr kleine Anwendung handelt ist die Anforderung an die
+        Datenbank nicht allzugross und benoetigt nicht notwendigerweise mongodb. Die Auswahl von mongodb
+        ist somit rein der neugirde geschuldet
+    %div.span-24
+      %h5.bottom
+        Womit wurde die Server-Seite realisiert?
+      %p
+        Es wird das web-framework sinatra fuer ruby verwendet udn ist ebenso wie die Datenbank recht minimalistisch gehalten.
+        Das Seitenlayout wird dabei mittels haml gendert und gehostet ist das ganze auf heroku.
+        Als zusaetzliche gem wurden amatch verwendet um die fuzzy string compare funktion zu verwenden.
+        Fuer die Datenbankverbindung wurde mongoid verwendet.    
+    %div.span-24
+      %h5.bottom
+        Wo liegen die ganzen Audiodateien?
+      %p
+        Es werden sowohl mp3 als auch ogg Dateien verwendet und liegen gemeinsam bei Amazon S3
+    %div.span-24
+      %h5.bottom
+        Welche Client- bzw. Javascript Frameworks wurden verwendet?
+      %p
+        backbone.js, jquery, underscore.js, buzz.js
+    %div.span-24
+      %h5.bottom
+        Gibt es auch einen Administrationsbereich oder wie werden neue Quizzes angelegt?
+      %p
+        Der Dateiupload sowie das anlegen eine neues Quiz passiert woechentlich durch ein einfaches rubyscript und wird nicht
+        ueber die webseite durchgefuehrt        
+    %div.span-24
+      %h5.bottom
+        Ich habe Fragen, Annmerkungen oder Kritik - wie kann ich mich mitteilen?
+      %p
+        Der beste weg ist via e-mail an da_freakl@hotmail.de
+    %div.span-24
+      %h5.bottom
+        Kann ich den kompletten Quelltext sehen?
+      %p
+        Fast, das meiste ist auf github zu finden unter: link@github
+    %div.span-24
+      %h5.bottom
+        Kann ich ein Zitat direkt verlinken?
+      %p
+        Ja, nutzt entweder die Zitatnummer in der URL. Beispiel
+        %code http://mquzz.de/14
+        Das neuste Zitat ist immer direkt &uuml;ber die root URL erreichbar, also unter
+        %code http://mquzz.de/.
+
+
+  %div.container#rules-area
+    %div.span-24
+      %h5.bottom
+        Wie funktioniert das hier?
+      %p
+        Ganz einfach:<br />
+        1.) Lautsprecher anmachen<br />
+        2.) Filmzitat ausw&auml;hlen und abspielen<br />
+        3.) Filmtitel des abgespielten Zitats eingeben und abschicken <br />
+        Das Ergebnis wird direkt ausgewertet und anschliessend gezeigt.
+    %div.span-24
+      %h5.bottom
+        Welcher Titelname muss eingegeben werden?
+      %p
+        Der korrekte Titel ist <code>http://imdb.com</code> entnommen. Da es sich hier jedoch um ein Quiz in deutscher
+        Sprache handelt, sind auf jeden Fall die laut imdb angegebenen, deutschen Titel korrekt.
+        Zus&auml;tzlich ist noch der englische Titel g&uuml;ltig. Beispiel:
+        Es ist korrekt bei einem passenden Zitat entweder den deutschen titel <em>Stirb Langsam</em>
+        oder den englischen Titel <em>Die Hard</em> anzugeben.
+    %div.span-24
+      %h5.bottom
+        Was muss bei Filmen mit mehrere Teilen bzw. Episoden angegeben werden?
+      %p
+        Es muss immer der vollst&auml;ndige Titel angegeben werden, also auch hier gilt: so wie der Film auch in der
+        imdb gef&uuml;hrt wird. Beispiele: Bei einem Zitat aus dem dritten Film der Zur&uuml;ck in die Zukunft Trilogie
+        lautet die korrekte L&ouml;sung
+        %em Zur&uuml;ck in die Zukunft III
+        , also mit r&ouml;mischer Zahl geschrieben und kein Zusatz bzw. Untertitel. Ein Zitat aus dem ersten Teil
+        der Herr der Ringe Trilogie lauet der korrekte Titel
+        %em Der Herr der Ringe - Die Gef&auml;hrten
+        , also ohne Episodennummer daf&uuml;r mit vollem Titel und Untertitel.
+    %div.span-24
+      %h5.bottom
+        Wie tolerant ist das Ganze gegen Rechtschreibfehler und Sonderzeichen wie dem Bindestrich?
+      %p
+        Es wird kein 1:1 Vergleich des eingegebenen Textes und der L&ouml;sung durchgef&uuml;hrt. Stattdessen gibt es ein Toleranz
+        von falschen Buchstaben in Abh&auml;ngigkeit der L&auml;nge des L&ouml;sungswortes - l&auml;ngere W&ouml;rter d&uuml;rfen mehr
+        Tippfehler enthalten als k&uuml;rzere W&ouml;rter.
+        Der Bindestrich hat eine gesonderte Rolle, da er h&auml;ufig verwendet wird um Untertitel abzutrennen und wird desshalb vom
+        Vergleich ausgeschlossen, d.h. ein vergessener Bindestrich f&uuml;hrt nicht zu einem falschen Ergebnis - ebenso f&uuml;hren
+        &uuml;berfl&uuml;ssige Bindestriche auch zu keinem falschen Ergebnis.	      
+        Gross-/Kleinschreibung wird nicht unterschieden, es ist also das gleiche wenn man
+        %em matrix
+        ,
+        %em Matrix
+        oder
+        %em mAtRiX
+        eingibt.
+
+
+  %div.container#error-area
+    %p error in audio support
+
+/Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary
+%script(src="/js/libs/jquery-1.7.js")
+:javascript
+  window.jQuery || document.write('<script src="/js/libs/jquery-1.7.min.js">\x3C/script>')
+
+%script(src="/js/libs/underscore-min.js")
+%script(src="/js/libs/json2.js")
+%script(src="/js/libs/backbone-min.js")
+%script(src="/js/libs/buzz.js")
+%script(src="/js/plugins.js")
+%script(src="/js/app.js")
+
+/[if lt IE 7]
+  %script(src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js")
+  :javascript
+    window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+
+:javascript
+  $(function(){
+    window.quotes.reset(#{@quotes.to_json()});
+    //appRouter = new AppRoute;
+    Backbone.history.start({pushState: true});
+    //quotes.select(quotes.first());
+    //quotesView.select(quotes.first());
+  });
+
+
+%script{ :type => 'text/template', :id => 'quote-template' }
+  %div.mq-box.mq-nav-item <%= quote.get('number') %>
+
+
+%script{ :type => 'text/template', :id => 'quote-detail-template' }
+  %div.span-24
+    %h3.bottom Zitat Nummer <%= quote.get('number') %>
+    %span.small
+      erstellt am
+      <time datetime="<%= quote.get('qdate') %>"><%= formattedDate %></time>
+      mit bisher <%= quote.get('commits') %> Einsendungen
+    %div#progress.mq-progress-bar
+    %div#play.mq-play-btn.top play
+    %input.title.mq-input.span-22{ :name => 'solution', :placeholder => 'Zitat abspielen und Loesung hier eingeben' }
+    
+    %div.span-24
+      %p.prepend-0
+        %a.button.mq-button abschicken
+    %hr
+
+
+%script{ :type => 'text/template', :id => 'quote-result-template' }
+  %div.span-8
+    %p
+      %h3.bottom L&ouml;sung von Zitat Nummer <%= quote.number %>
+      %span.small
+        bisherige L&ouml;sungsquote liegt bei <%= rate %>% (<%= quote.solutions %>/<%= quote.commits %>)
+  %div.span-16.last
+    %p
+      %nav
+        %ul.mq-nav-list
+          %li
+            <a target='_blank' href='<%= quote.trailer %>'><div class='mq-box mq-nav-item'>trailer</div></a>
+          %li
+            <a target='_blank' href='<%= quote.info %>'><div class='mq-box mq-nav-item'>info</div></a>
+          %li
+            <a target='_blank' href='<%= quote.buy %>'><div class='mq-box mq-nav-item'>amazon</div></a>
+          %li
+            <a target='_blank' href='<%= quote.stream %>'><div class='mq-box mq-nav-item'>stream</div></a>
+  %div.span-24.last
+    Du hattest
+    %span.small
+      <%= posted %>
+    eingegeben.
+    
+    <% if( quote.titles.length === 1  ){ %>
+    Die richtige Antwort ist
+    %span.small
+      <%= quote.titles[0] %>.
+    <% } else { %>
+    M&ouml;gliche richtige Antworten sind
+    %span.small
+      <%= quote.titles[0] %>
+    sowie
+    %span.small
+      <%= quote.titles[1] %>.
+    <% } %>
+    Somit ist deine Antwort
+    %h2.bottom
+      <% if( correct  ){ %>
+      %span.mq-sol.correct
+        richtig
+      <% } else { %>
+      %span.mq-sol.wrong
+        falsch      
+      <% } %>
+    %hr
+
+</html>
