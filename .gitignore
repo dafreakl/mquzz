@@ -1,0 +1,6 @@
+# audio files
+*.mp3
+*.ogg
+
+# install scripts
+install_*.rb
