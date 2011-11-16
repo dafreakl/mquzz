@@ -4,5 +4,6 @@ everyday a new quote
 built with sinatra and backbone.js using buzz.js for audio support
 
  TODO:
+    - db config file
     - analytics
     - merge and minify
