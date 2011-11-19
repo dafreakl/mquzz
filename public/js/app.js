@@ -27,12 +27,14 @@ $(function () {
     // -------------------------------------------------------------------------    
     var Quote = Backbone.Model.extend({
         defaults: {
-            selected: false
+            selected: false,
+            curl: 'http://mquzz.de/'
         },
 
         initialize: function (){
             var audioUrl = '/audio/' + this.get('audiourl');
             // var audioUrl = 'http://mquzz-audio.s3.amazonaws.com/' + this.get('audiourl');
+            this.set({curl: this.get('curl')+this.get('number')}, {silent: true});
             this.sound = null;
         },
         
@@ -120,7 +122,7 @@ $(function () {
         },
         
         evaluate: function(){
-            var req = $(this.el).find('.mq-input').val();;
+            var req = $(this.el).find('.mq-input').val();
             buzz.all().stop();
             this.model.evaluate(req, this);
         },
@@ -164,7 +166,6 @@ $(function () {
             return this;
         }    
     });
-    
     //
     // -------------------------------------------------------------------------
     var QuoteView = Backbone.View.extend({
@@ -244,7 +245,7 @@ $(function () {
         mainElem: $('#main-area'),
         listElem: $('#list-area'),
         infoElem: $('#info-area'),
-        rulesElem: $('#rules-area'),        
+        rulesElem: $('#rules-area'),
         errorElem: $('#error-area'),
     
         initialize: function(){

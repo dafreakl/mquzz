@@ -8,14 +8,6 @@ include Amatch
 
 Mongoid.load!("config/mongoid.yml")
 
-#configure do
-#  Mongoid.configure do |config|
-#    config.master = Mongo::Connection.new.db("mq2")
-#    host = "localhost"
-#    autocreate_indexes = true
-#  end
-#end
-
 get '/api/quotes' do
   content_type :json
   quotes = Quote.all().fields(["number", "qdate", "solutions", "commits", "audiourl", "addinfo"]).desc(:number)

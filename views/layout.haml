@@ -33,6 +33,20 @@
   /[if lt IE 8] <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">  
   %link(rel="stylesheet" href="/css/css.css?v=2")
   %script(src="/js/libs/modernizr.js")
+  %script(src="https://apis.google.com/js/plusone.js" type="text/javascript")
+    {lang: 'de'}
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-8875296-2']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
 %body
   %div.container#nav-area
     %div.span-24.last
@@ -64,6 +78,23 @@
       %nav#quotes
         %ol.mq-nav-list
 
+    %div.span-24.prepend-top
+      <a href="https://twitter.com/share"
+      class="twitter-share-button"
+      data-url="http://mquzz.de"
+      data-count="horizontal"
+      data-via="mquzz"
+      data-lang="de">Twittern</a>
+      <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+      <g:plusone size="medium" href="http://mquzz.de"></g:plusone>
+      <div class="fb-like"
+      data-href="http://mquzz.de"
+      data-send="true"
+      data-layout="button_count"
+      data-width="450"
+      data-show-faces="false"
+      data-font="arial"></div>
+
 
   %div.container#info-area
     %div.span-24
@@ -77,7 +108,14 @@
           %input{ :type => 'hidden', :name => 'hosted_button_id', :value => 'WBNXWDLPMP9YC' }
           %input{ :type => 'image', :src => 'https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_SM.gif', :border => '0', :name => 'submit', :alt => 'Jetzt einfach, schnell und sicher online bezahlen - mit PayPal.' }
           %img{ :alt => '', :border => '0', :src => 'https://www.paypalobjects.com/de_DE/i/scr/pixel.gif', :width => '1', :height => '1' }
-
+    %div.span-24
+      %h5.bottom
+        Wie kann ich hier auf dem Laufenden bleiben?
+      %p
+        Aktuelles ist bei
+        %a{ :href => 'http://www.twitter.com/mquzz' }
+          twitter
+        zu finden.
     %div.span-24
       %h5.bottom
         Auf welcher Datenbank baut die Anwendung auf?
@@ -179,12 +217,20 @@
         %em mAtRiX
         eingibt.
 
-
   %div.container#error-area
     %p error in audio support
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) {return;}
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 /Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary
-%script(src="/js/libs/jquery-1.7.js")
+%script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js")
 :javascript
   window.jQuery || document.write('<script src="/js/libs/jquery-1.7.min.js">\x3C/script>')
 
@@ -203,10 +249,7 @@
 :javascript
   $(function(){
     window.quotes.reset(#{@quotes.to_json()});
-    //appRouter = new AppRoute;
     Backbone.history.start({pushState: true});
-    //quotes.select(quotes.first());
-    //quotesView.select(quotes.first());
   });
 
 
