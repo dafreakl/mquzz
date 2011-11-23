@@ -1,3 +1,3 @@
-require 'mquzz'
+require './mquzz'
 
 run Sinatra::Application
