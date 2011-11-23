@@ -3,7 +3,4 @@ everyday a new quote
 
 built with sinatra and backbone.js using buzz.js for audio support
 
- TODO:
-    - db config file
-    - analytics
-    - merge and minify
+todo: minify js via local build script and include minimized version

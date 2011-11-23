@@ -32,8 +32,8 @@ $(function () {
         },
 
         initialize: function (){
-            var audioUrl = '/audio/' + this.get('audiourl');
-            // var audioUrl = 'http://mquzz-audio.s3.amazonaws.com/' + this.get('audiourl');
+            //var audioUrl = '/audio/' + this.get('audiourl');
+            var audioUrl = 'http://mquzz-audio.s3.amazonaws.com/' + this.get('audiourl');
             this.set({curl: this.get('curl')+this.get('number')}, {silent: true});
             this.sound = null;
         },
@@ -249,8 +249,6 @@ $(function () {
         errorElem: $('#error-area'),
     
         initialize: function(){
-            // TODO: buzz error handling
-            // TODO: zurueck knopf nach home -> rules -> back leere form
             this.showPage(this.mainElem, this.listElem);
         },
 
@@ -272,12 +270,14 @@ $(function () {
 
         error: function(){
             this.showPage(this.errorElem);
-            // TODO: disable menu links
-            // TODO: disable quiz links -> remove quizzes
         },
 
         home: function(){
-            this.showPage(this.mainElem, this.listElem);
+            if( buzz.isSupported() ){
+                this.showPage(this.mainElem, this.listElem);
+            } else {
+                this.error();
+            }
             return false;
         },
 
@@ -289,13 +289,13 @@ $(function () {
         
         info: function(){
             this.showPage(this.infoElem);
-            appRouter.navigate('info');            
+            appRouter.navigate('info');
             return false;
         },
         current: function(){
             this.showPage(this.mainElem, this.listElem);
             appRouter.home();
-            return false;            
+            return false;
         }
     });
     //
@@ -335,7 +335,7 @@ $(function () {
     });
     // -------------------------------------------------------------------------
     appRouter = new AppRoute;
-    staticView = new StaticView;    
+    staticView = new StaticView;
     quotes = new QuoteList;
     quotesView = new QuoteListView({collection: quotes});
     detailView = new QuoteDetailView({el: $('#main-area')});

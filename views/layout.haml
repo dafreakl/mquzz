@@ -5,17 +5,17 @@
 /[if gt IE 8] <!-->  <html class="no-js" lang="en"> <!--
 %head
   %meta{'charset' => 'utf-8' }
-  %meta{'name' => 'description', 'content' => 'mquzz ist ein audiobasiertes Filmquiz mit w&ouml;chentlich 10 neuen Fragen. Teste jetzt dein Filmwissen auf eine andere Art.' }  
+  %meta{'name' => 'description', 'content' => 'mquzz ist ein audiobasiertes Filmquiz mit einem t&auml;glich neuen Zitat. Teste jetzt dein Filmwissen auf eine andere Art.' }  
   %meta{'name' => 'author', 'content' => 'Oliver Heck' }
-  %meta{'name' => 'keywords', 'content' => 'filmzitate raten, filmzitat, zitate filme, filmquiz' }
+  %meta{'name' => 'keywords', 'content' => 'filmzitate raten, filmzitat, zitate filme, filmquiz, t&auml;glich Zitat' }
   
   %meta{'http-equiv' => 'imagetoolbar', 'content' => 'false'}
   
   %meta{'name' => 'application-name', 'content' => 'mquzz'}
   %meta{'name' => 'msapplication-tooltip', 'content' => 'Ein audiobasiertes Filmquiz'}
-  %meta{'name' => 'msapplication-starturl', 'content' => 'http://www.mquzz.de'}
-  %meta{'name' => 'msapplication-task', 'content' => 'name=Regeln;action-uri=http://www.mquzz.de/regeln'}
-  %meta{'name' => 'msapplication-task', 'content' => 'name=Info;action-uri=http://www.mquzz.de/info'}
+  %meta{'name' => 'msapplication-starturl', 'content' => 'http://mquzz.de'}
+  %meta{'name' => 'msapplication-task', 'content' => 'name=Regeln;action-uri=http://mquzz.de/regeln'}
+  %meta{'name' => 'msapplication-task', 'content' => 'name=Info;action-uri=http://mquzz.de/info'}
   
   %meta{'property' => 'og:title', 'content' => 'mquzz'}
   %meta{'property' => 'og:description', 'content' => 'Ein audiobasiertes Filmquiz'}
@@ -99,10 +99,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
   %div.container#info-area
     %div.span-24
       %h5.bottom
-        Wie kann ich dieses Projekt unterstuetzen?
+        Mir gef&auml;llt das was ich hier sehe - kann ich irgendwie das Projekt unterst&uuml;tzen?
       %p
-        technisch durch tipps und tricks, monitaer durch den spenden knopf oder den
-        amazon links oder einfach durch einen netten kommentar
+        Jede Hilfe ist willkommen, sei es durch Tipps und Tricks, technische
+        Hilfen, Ideen, durch eine kleine Spende mittels des PayPal Knopfs oder einfach nur durch
+        einen netten Kommentar.
         %form{ :action => 'https://www.paypal.com/cgi-bin/webscr', :method => 'post' }
           %input{ :type => 'hidden', :name => 'cmd', :value => '_s-xclick' }
           %input{ :type => 'hidden', :name => 'hosted_button_id', :value => 'WBNXWDLPMP9YC' }
@@ -112,60 +113,101 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
       %h5.bottom
         Wie kann ich hier auf dem Laufenden bleiben?
       %p
-        Aktuelles ist bei
-        %a{ :href => 'http://www.twitter.com/mquzz' }
-          twitter
-        zu finden.
+        Am einfachsten ist es dem zugeh&ouml;rigen
+        %a{ :href => 'http://www.twitter.com/mquzz', :target => '_blank' }
+          Twitter-Account
+        zu folgen. Bei Fragen, Annmerkungen oder Kritik hilft auch eine E-Mail an da_freakl( at )hotmail.de
     %div.span-24
       %h5.bottom
-        Auf welcher Datenbank baut die Anwendung auf?
+        Ist es m&ouml;glich ein bestimmtes Zitat direkt zu adressieren?
       %p
-        mquzz verwendet mongodb welches auf mongolabs.com gehostet ist. Da es sich hier
-        jedoch um eine sehr kleine Anwendung handelt ist die Anforderung an die
-        Datenbank nicht allzugross und benoetigt nicht notwendigerweise mongodb. Die Auswahl von mongodb
-        ist somit rein der neugirde geschuldet
-    %div.span-24
-      %h5.bottom
-        Womit wurde die Server-Seite realisiert?
-      %p
-        Es wird das web-framework sinatra fuer ruby verwendet udn ist ebenso wie die Datenbank recht minimalistisch gehalten.
-        Das Seitenlayout wird dabei mittels haml gendert und gehostet ist das ganze auf heroku.
-        Als zusaetzliche gem wurden amatch verwendet um die fuzzy string compare funktion zu verwenden.
-        Fuer die Datenbankverbindung wurde mongoid verwendet.    
-    %div.span-24
-      %h5.bottom
-        Wo liegen die ganzen Audiodateien?
-      %p
-        Es werden sowohl mp3 als auch ogg Dateien verwendet und liegen gemeinsam bei Amazon S3
-    %div.span-24
-      %h5.bottom
-        Welche Client- bzw. Javascript Frameworks wurden verwendet?
-      %p
-        backbone.js, jquery, underscore.js, buzz.js
-    %div.span-24
-      %h5.bottom
-        Gibt es auch einen Administrationsbereich oder wie werden neue Quizzes angelegt?
-      %p
-        Der Dateiupload sowie das anlegen eine neues Quiz passiert woechentlich durch ein einfaches rubyscript und wird nicht
-        ueber die webseite durchgefuehrt        
-    %div.span-24
-      %h5.bottom
-        Ich habe Fragen, Annmerkungen oder Kritik - wie kann ich mich mitteilen?
-      %p
-        Der beste weg ist via e-mail an da_freakl@hotmail.de
-    %div.span-24
-      %h5.bottom
-        Kann ich den kompletten Quelltext sehen?
-      %p
-        Fast, das meiste ist auf github zu finden unter: link@github
-    %div.span-24
-      %h5.bottom
-        Kann ich ein Zitat direkt verlinken?
-      %p
-        Ja, nutzt entweder die Zitatnummer in der URL. Beispiel
+        Ja, jedes Zitat hat eine eindeutige Nummer die kontinuierlich hochgez&auml;hlt wird und
+        mit dieser Nummer k&ouml;nnen einzelne Zitate direkt angesprochen werden. Hierzu muss lediglich die
+        Nummer an die Web-Adresse angeh&auml;ngt werden. Beispielsweise kann mittels der Adresse
         %code http://mquzz.de/14
-        Das neuste Zitat ist immer direkt &uuml;ber die root URL erreichbar, also unter
-        %code http://mquzz.de/.
+        direkt das 14. Zitat angesprochen werden.
+        Wird keine Nummer an die Adresse angeh&auml;ngt, so wird immer das aktuellste Zitat geladen.
+
+    %div.span-24
+      %h5.bottom
+        Welche Komponenten sind bei der Realisierung verwendet worden?
+      %p
+        Die Server-Seite ist mit
+        %a{ :href => 'http://www.sinatrarb.com/', :target => '_blank'}
+          Sinatra
+        f&uuml;r Ruby realisiert. Zur Kommunikation mit der Datenbank wird
+        %a{ :href => 'http://mongoid.org/', :target => '_blank'}
+          mongoid
+        verwendet. Als zus&auml;tzliches gem wurde
+        %a{ :href => 'http://flori.github.com/amatch/', :target => '_blank'}
+          amatch
+        verwendet, um mittels Levenshtein Algorithmus
+        den eingegeben Titel zu vergleichen. Das Layout der Seite wurde mit
+        %a{ :href => 'http://haml-lang.com/', :target => '_blank'}
+          haml
+        definiert.
+      %p
+        Da der Server relativ schlank gehalten ist befindet sich die wesentliche Logik auf der Client-Seite.
+        Die Basis der Seite bildet
+        %a{ :href => 'http://html5boilerplate.com/', :target => '_blank'}
+          html5 boilerplate
+        in angepasster Form, sowie
+        %a{ :href => 'http://blueprintcss.org/', :target => '_blank'}
+          blueprint.css
+        f&uuml;
+        die Positionierung und der Schrift.
+        Als Abstrkation und einheitlichen Schnittstelle zur html5 audio API wird das grossartige
+        %a{ :href => 'http://buzz.jaysalvat.com/', :target => '_blank'}
+          buzz.js
+        verwendet.
+        Die Strukturierung der Anwendung wird durch
+        %a{ :href => 'http://documentcloud.github.com/backbone', :target => '_blank'}
+          backbone.js
+        realisiert.
+        Ebenso wird auf
+        %a{ :href => 'http://jquery.com/', :target => '_blank'}
+          jQuery
+        und
+        %a{ :href => 'http://documentcloud.github.com/underscore/', :target => '_blank'}
+          underscore.js
+        zur&uuml;ckgegriffen.
+    %div.span-24
+      %h5.bottom
+        Wo sind die einzelnen Bestandteile der Seite gehostet?
+      %p
+        Das folgende Bild gibt einen groben &Uuml;berblick, wo die einzelnen Elemente
+        zu finden sind:
+      %img{ :src => 'img/comps.png' }
+      %p
+        Der Quellcode ist mittels git verwaltet und auf
+        %a{ :href => 'github.com/dafreakl/mquzz', :target => '_blank'}
+          github
+        zu finden. 
+        %a{ :href => 'http://www.heroku.com', :target => '_blank' }
+          Heroku
+        erm&ouml;glicht das einfache hosten eines entsprechendes Projekts und dient in
+        als Anfrageendpunkt. Als Datenbanksystem wird
+        %a{ :href => 'http://www.mongodb.org/', :target => '_blank' }
+          mongodb
+        verwendet, welche bei
+        %a{ :href => 'https://mongolab.com', :target => '_blank' }
+          mongolab
+        gehostet wird. Der Zugriff erfolgt von der auf Heroku laufenden Anwendung.
+        Desweiteren wird das CDN von google verwendet, um
+        %a{ :href => 'http://jquery.com', :target => '_blank' }
+          jQuery
+        einzubinden. Die Audiodateien (mp3 und ogg) der einzelnen Zitate sind in
+        %a{ :href => 'http://aws.amazon.com/de/s3', :target => '_blank' }
+          Amazons S3
+        abgelegt und werden von dort direkt vom Client angefragt.
+    %div.span-24
+      %h5.bottom
+        Ist der Quelltext komplett einsichtlich?
+      %p
+        Fast, das meiste ist unter folgendem Link bei github zu finden
+        %a{ :href => 'http://github.com/dafreakl/mquzz', :target => '_blank'}
+          mquzz@github
+
 
 
   %div.container#rules-area
@@ -176,49 +218,59 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         Ganz einfach:<br />
         1.) Lautsprecher anmachen<br />
         2.) Filmzitat ausw&auml;hlen und abspielen<br />
-        3.) Filmtitel des abgespielten Zitats eingeben und abschicken <br />
-        Das Ergebnis wird direkt ausgewertet und anschliessend gezeigt.
+        3.) Filmtitel des abgespielten Zitats eingeben und L&ouml;sung abschicken <br />
+        Das Ergebnis wird direkt ausgewertet und anschliessend angezeigt.
     %div.span-24
       %h5.bottom
-        Welcher Titelname muss eingegeben werden?
+        Welcher Titelname kann eingegeben werden und wird als richtig gewertet?
       %p
-        Der korrekte Titel ist <code>http://imdb.com</code> entnommen. Da es sich hier jedoch um ein Quiz in deutscher
-        Sprache handelt, sind auf jeden Fall die laut imdb angegebenen, deutschen Titel korrekt.
-        Zus&auml;tzlich ist noch der englische Titel g&uuml;ltig. Beispiel:
-        Es ist korrekt bei einem passenden Zitat entweder den deutschen titel <em>Stirb Langsam</em>
-        oder den englischen Titel <em>Die Hard</em> anzugeben.
+        Der korrekte Titel ist
+        %a{ :href => 'http://imdb.com', :target => '_blank' }
+          %code
+            http://imdb.com
+        entnommen. Da es sich hier jedoch um ein Quiz in deutscher Sprache handelt,
+        sind die laut imdb angegebenen, deutschen Titel immer korrekt.
+        Zus&auml;tzlich ist auch noch der englische, meist Original-, Titel g&uuml;ltig. Beispiel:
+        Es wird bei einem entsprechenden Zitat entweder de deutsche Filmtitel
+        %em Stirb Langsam
+        oder der englische Originaltitel
+        %em Die Hard
+        als korrekt gewertet.
     %div.span-24
       %h5.bottom
-        Was muss bei Filmen mit mehrere Teilen bzw. Episoden angegeben werden?
+        Wie muss die Eingabe bei Filmen mit mehrere Teilen bzw. Episoden erfolgen?
       %p
-        Es muss immer der vollst&auml;ndige Titel angegeben werden, also auch hier gilt: so wie der Film auch in der
-        imdb gef&uuml;hrt wird. Beispiele: Bei einem Zitat aus dem dritten Film der Zur&uuml;ck in die Zukunft Trilogie
-        lautet die korrekte L&ouml;sung
+        Auch hier gilt: Grundlage ist die Angabe bei
+        %a{ :href => 'http://imdb.com', :target => '_blank' }
+          %code
+            http://imdb.com
+        , d.h. es muss immer der dort angegeben, vollst&auml;ndige Titel eingegeben werden
+        Beispiele: Bei einem Zitat aus dem dritten Film der
+        %em Zur&uuml;ck in die Zukunft
+        Trilogie lautet die korrekte L&ouml;sung
         %em Zur&uuml;ck in die Zukunft III
-        , also mit r&ouml;mischer Zahl geschrieben und kein Zusatz bzw. Untertitel. Ein Zitat aus dem ersten Teil
-        der Herr der Ringe Trilogie lauet der korrekte Titel
+        , also geschrieben mit r&ouml;mischer Zahl und kein Zusatz bzw. Untertitel.
+        Bei einem Zitat aus dem ersten Teil der Herr der Ringe Trilogie w&uuml;rde der der korrekte Titel
         %em Der Herr der Ringe - Die Gef&auml;hrten
-        , also ohne Episodennummer daf&uuml;r mit vollem Titel und Untertitel.
+        lauten, also ohne Episodennummer daf&uuml;r aber mit vollst&auml;ndigem Titel sowie Untertitel.
     %div.span-24
       %h5.bottom
-        Wie tolerant ist das Ganze gegen Rechtschreibfehler und Sonderzeichen wie dem Bindestrich?
+        Wie tolerant ist die Auswertung der eingegeben L&ouml;sung - werden Tippfehler verschmerz und
+        Sonderzeichen wie ein Bindestirch bis zu einem gewissen Grad akzeptiert?
       %p
-        Es wird kein 1:1 Vergleich des eingegebenen Textes und der L&ouml;sung durchgef&uuml;hrt. Stattdessen gibt es ein Toleranz
-        von falschen Buchstaben in Abh&auml;ngigkeit der L&auml;nge des L&ouml;sungswortes - l&auml;ngere W&ouml;rter d&uuml;rfen mehr
+        Es wird kein 1:1 Vergleich des eingegebenen Textes mit der hinterlegten L&ouml;sung durchgef&uuml;hrt.
+        Die Vergleichsfunktion ist tolerant gegen&uuml;ber Tippfehler, also falschen Buchstaben an falscher Stelle in
+        Abh&auml;ngigkeit der L&auml;nge des L&ouml;sungswortes, d.h. l&auml;ngere W&ouml;rter d&uuml;rfen mehr
         Tippfehler enthalten als k&uuml;rzere W&ouml;rter.
-        Der Bindestrich hat eine gesonderte Rolle, da er h&auml;ufig verwendet wird um Untertitel abzutrennen und wird desshalb vom
-        Vergleich ausgeschlossen, d.h. ein vergessener Bindestrich f&uuml;hrt nicht zu einem falschen Ergebnis - ebenso f&uuml;hren
-        &uuml;berfl&uuml;ssige Bindestriche auch zu keinem falschen Ergebnis.	      
-        Gross-/Kleinschreibung wird nicht unterschieden, es ist also das gleiche wenn man
-        %em matrix
-        ,
-        %em Matrix
-        oder
-        %em mAtRiX
-        eingibt.
+        Da Bindestriche in Filmtiteln h&auml;ufig als Trennzeichen verwendet werden, hat dieses Zeichen eine gesonderte Rolle
+        und wird vom Vergleich ausgeschlossen, wodurch ein vergessener Bindestrich oder ein &uuml;berfl&uuml;ssiger Bindestrich
+        zu keinem negativen Ergebnis f&uuml;hren.
+        Zwischen Gro&szlig;- und Kleinschreibung wird nicht unterschieden.
 
   %div.container#error-area
-    %p error in audio support
+    %div.error
+      Dein Browser unterst&uuml;tzt das audio tag nicht, bitte benutzt einen modernen Browser wie chrome,
+      firefox, opera oder den ie ab version 9.
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -265,8 +317,10 @@ fjs.parentNode.insertBefore(js, fjs);
       <time datetime="<%= quote.get('qdate') %>"><%= formattedDate %></time>
       mit bisher <%= quote.get('commits') %> Einsendungen
     %div#progress.mq-progress-bar
-    %div#play.mq-play-btn.top play
-    %input.title.mq-input.span-22{ :name => 'solution', :placeholder => 'Zitat abspielen und Loesung hier eingeben' }
+    %div#play.mq-play-btn.top
+      /%img{ :src => 'img/playarrow.png' }
+      %div.mq-play-arrow
+    %input.title.mq-input.span-22{ :name => 'solution', :placeholder => "Zitat abspielen und Antwort hier eingeben" }
     
     %div.span-24
       %p.prepend-0
@@ -290,8 +344,6 @@ fjs.parentNode.insertBefore(js, fjs);
             <a target='_blank' href='<%= quote.info %>'><div class='mq-box mq-nav-item'>info</div></a>
           %li
             <a target='_blank' href='<%= quote.buy %>'><div class='mq-box mq-nav-item'>amazon</div></a>
-          %li
-            <a target='_blank' href='<%= quote.stream %>'><div class='mq-box mq-nav-item'>stream</div></a>
   %div.span-24.last
     Du hattest
     %span.small
