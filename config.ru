@@ -1,3 +1,3 @@
-require "server"
+require 'mquzz'
 
 run Sinatra::Application
