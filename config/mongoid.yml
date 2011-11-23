@@ -1,0 +1,6 @@
+development:
+  host: localhost
+  database: mq2  
+  
+production:
+  uri: <%= ENV['MONGOLAB_URI'] %>
