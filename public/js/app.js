@@ -32,8 +32,8 @@ $(function () {
         },
 
         initialize: function (){
-            //var audioUrl = '/audio/' + this.get('audiourl');
             var audioUrl = 'http://mquzz-audio.s3.amazonaws.com/' + this.get('audiourl');
+            //var audioUrl = '/audio/' + this.get('audiourl');
             this.set({curl: this.get('curl')+this.get('number')}, {silent: true});
             this.sound = null;
         },
@@ -132,8 +132,8 @@ $(function () {
         },
         
         play: function(ev){
-            var audioUrl = '/audio/' + this.model.get('audiourl'),
-            //var audioUrl = 'http://mquzz-audio.s3.amazonaws.com/' + this.model.get('audiourl'),
+            //var audioUrl = '/audio/' + this.model.get('audiourl'),
+            var audioUrl = 'http://mquzz-audio.s3.amazonaws.com/' + this.model.get('audiourl'),
                 procEl = $('#progress'),
                 inputEl = $(this.el).find('.mq-input');
             
