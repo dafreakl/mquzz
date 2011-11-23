@@ -7,6 +7,7 @@ install_*.rb
 
 # config files
 config/mongoid.yml
+.bundle
 
 # start script
 *.bat
