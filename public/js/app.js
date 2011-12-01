@@ -32,9 +32,6 @@ $(function () {
         },
 
         initialize: function (){
-            var audioUrl = 'http://mquzz-audio.s3.amazonaws.com/' + this.get('audiourl');
-            //var audioUrl = '/audio/' + this.get('audiourl');
-            this.set({curl: this.get('curl')+this.get('number')}, {silent: true});
             this.sound = null;
         },
         
@@ -180,8 +177,8 @@ $(function () {
             this.collection.select(this.model);
             detailView.setModel(this.model);
             this.render();
-            
             appRouter.navigate('/'+this.model.get('number'), false);
+            
             return false;
         },
         
@@ -249,7 +246,7 @@ $(function () {
         errorElem: $('#error-area'),
     
         initialize: function(){
-            this.showPage(this.mainElem, this.listElem);
+            this.home();
         },
 
         events: {
@@ -305,6 +302,7 @@ $(function () {
             "regeln": "rules",
             "info": "info",
             ":nr": "show",
+            "/:nr": "show", //IE9 without history api
             "": "home"
         },
         
