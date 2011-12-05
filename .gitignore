@@ -10,4 +10,4 @@ install_*.rb
 
 # start script
 *.bat
-start_server
+*.sh
