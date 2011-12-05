@@ -11,3 +11,4 @@ install_*.rb
 # start script
 *.bat
 *.sh
+*.txt
