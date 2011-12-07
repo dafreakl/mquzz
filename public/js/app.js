@@ -244,6 +244,7 @@ $(function () {
         infoElem: $('#info-area'),
         rulesElem: $('#rules-area'),
         errorElem: $('#error-area'),
+        impElem: $('#impressum-data'),
     
         initialize: function(){
             this.home();
@@ -252,7 +253,8 @@ $(function () {
         events: {
             'click #current': 'current',
             'click #rules': 'rules',
-            'click #info': 'info'
+            'click #info': 'info',
+            'click #impressum': 'impressum'
         },
 
         showPage: function(p){
@@ -262,6 +264,7 @@ $(function () {
             this.infoElem.hide();
             this.mainElem.hide();
             this.listElem.hide();
+            this.impElem.hide();
             _.each(_.toArray(arguments).slice(0), function(el){ el.show(); });
         },
 
@@ -289,6 +292,12 @@ $(function () {
             appRouter.navigate('info');
             return false;
         },
+        
+        impressum: function(){
+            this.showPage(this.impElem);
+            return false;
+        },
+        
         current: function(){
             this.showPage(this.mainElem, this.listElem);
             appRouter.home();

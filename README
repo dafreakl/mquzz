@@ -2,5 +2,3 @@ mquzz - audio based movie quiz
 everyday a new quote
 
 built with sinatra and backbone.js using buzz.js for audio support
-
-todo: minify js via local build script and include minimized version
