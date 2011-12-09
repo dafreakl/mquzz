@@ -1,18 +1,21 @@
+// mquzz.js
+// http://github.com/dafreakl/mquzz
 $(function () {
-    // http://kamikazemusic.com/quick-tips/jquery-html5-placeholder-fix/
+    // inspired by http://kamikazemusic.com/quick-tips/jquery-html5-placeholder-fix/
     // -------------------------------------------------------------------------
-    if(!Modernizr.input.placeholder){
-        $("input").each(function(){
-            if($(this).val()=="" && $(this).attr("placeholder")!=""){
-                $(this).val($(this).attr("placeholder"));
-                $(this).focus(function(){
-                    if($(this).val()==$(this).attr("placeholder")) $(this).val("");
+    function checkPlaceholder(){
+        if (!Modernizr.input.placeholder) {
+            var inputEl = $(".mq-input");
+            if( inputEl.val() !== inputEl.attr("placeholder")){
+                inputEl.val(inputEl.attr("placeholder"));
+                inputEl.focus(function(){
+                    if (inputEl.val() === inputEl.attr("placeholder")) inputEl.val("");
                 });
-                $(this).blur(function(){
-                    if($(this).val()=="") $(this).val($(this).attr("placeholder"));
+                inputEl.blur(function(){
+                    if(inputEl.val() === "") inputEl.val(inputEl.attr("placeholder"));
                 });
             }
-        });
+        }
     }
     //
     // -------------------------------------------------------------------------
@@ -160,6 +163,7 @@ $(function () {
         render: function(){
             $(this.el).empty();
             $(this.el).append( this.template({quote: this.model, formattedDate: formatDate(this.model.get('qdate')) }) );
+            checkPlaceholder();
             return this;
         }    
     });
