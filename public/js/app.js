@@ -100,7 +100,8 @@ $(function () {
         
         events: {
             'click .mq-play-btn': 'play',
-            'click .mq-button': 'evaluate'
+            'click .mq-button': 'evaluate',
+            'keypress input': 'evaluateKeypress'
         },
         
         evaluated: function(results){
@@ -119,6 +120,14 @@ $(function () {
                         : (data.quote.solutions / data.quote.commits * 100).toFixed(2)
                 }) );
             return this;
+        },
+        
+        evaluateKeypress: function(e){
+            if(e.which !== 13) {
+                return;
+            }
+            e.preventDefault();
+            this.evaluate();
         },
         
         evaluate: function(){
