@@ -20,6 +20,9 @@ body{
 	border: 1px solid #DA327E;
 	color: #fff;	
 }
+.mq-nav-submitted{
+	color: #bdbdbd;
+}
 .mq-box{
 	margin-right: 3px;
 	margin-bottom: 3px;

@@ -50,9 +50,24 @@ $(function () {
             return this.sound;
         },
         
+        setEvaluated: function(){
+            if(Modernizr.localstorage){
+                localStorage.setItem(this.get("number"), 'true');
+                this.trigger('evaluated');
+            }
+        },
+        
+        wasEvaluated: function(){
+            return Modernizr.localstorage
+                ? localStorage.getItem(this.get("number")) === 'true'
+                : false;
+        },
+        
         evaluate: function(postedSolution, resView){
             var that = this,
                 evalUrl = '/api/quote/'+this.get('number')+'/evaluate';
+            
+            this.setEvaluated();
             
             $.ajax({
                 type: 'POST',
@@ -63,7 +78,7 @@ $(function () {
                     resView.evaluated(data);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert('error in evaluation');
+                    alert('Error in evaluation, please try again later');
                 }
             });
         }
@@ -185,6 +200,10 @@ $(function () {
         
         events: { 'click': 'select' },
         
+        initialize: function(){
+            this.model.bind('evaluated', this.evaluated, this);
+        },
+        
         select: function(ev){
             buzz.all().stop(); //outch
             this.collection.select(this.model);
@@ -195,9 +214,18 @@ $(function () {
             return false;
         },
         
+        evaluated: function(){
+            if(!$(this.el).children('.mq-nav-item').hasClass('mq-nav-submitted')){
+                $(this.el).children('.mq-nav-item').addClass('mq-nav-submitted');
+            }
+        },
+        
         render: function() {
             $(this.el).empty();
             $(this.el).append( this.template({quote: this.model}) );
+            if (this.model.wasEvaluated()){
+                this.evaluated();
+            }
             if(this.model.isSelected()){
                 $(this.el).children('.mq-nav-item').addClass('mq-nav-selected');
                 detailView.render();
