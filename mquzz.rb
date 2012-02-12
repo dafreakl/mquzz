@@ -64,9 +64,9 @@ end
 class String
   def similar?(astr)
     #normalize
-    ns = self.strip.downcase.delete " -"
-    na = astr.strip.downcase.delete " -"
-    
+    ns = self.strip.downcase.delete " -,"
+    na = astr.strip.downcase.delete " -,"
+      
     #define max distance
     max_dist = case ns.length
       when 0..4 then 0
